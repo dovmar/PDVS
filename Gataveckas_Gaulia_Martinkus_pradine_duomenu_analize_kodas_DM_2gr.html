@@ -331,7 +331,7 @@ summary_list</code></pre>
 ## 5  8427816 5422700  0.19334  -2.3333 1.5898e+06
 ## 6       23      17 -0.36493  -2.3333 5.3645e+00</code></pre>
 <pre class="r"><code># išveda į failus, siekiant nukopijuoti į word lentelę
-x %&gt;% describe %&gt;% select(c(&quot;sd&quot;,&quot;mean&quot;,&quot;median&quot;,&quot;min&quot;,&quot;max&quot;)) %&gt;% round(2) %&gt;% write.csv(&quot;out.csv&quot;,quote=FALSE)
+x_1 %&gt;% describe %&gt;% select(c(&quot;sd&quot;,&quot;mean&quot;,&quot;median&quot;,&quot;min&quot;,&quot;max&quot;)) %&gt;% round(2) %&gt;% write.csv(&quot;out_2.csv&quot;,quote=FALSE)
 
 
 temp &lt;- summary_list %&gt;% enframe() %&gt;% unnest_longer(&quot;value&quot;) 
@@ -441,12 +441,14 @@ x_2 %&gt;% filter(Employees %in% outliers$Employees) %&gt;% count(Industry) </co
   </script>
 </div>
 <pre class="r"><code>x_3 &lt;- x_2 %&gt;% filter(!Employees %in% outliers$Employees)</code></pre>
-<pre class="r"><code>x_3 %&gt;% select(names) %&gt;% purrr::map(~boxplot.stats(.x,3)$out) # daugiau išskirčių pagal dominančius stulpelius nerasta</code></pre>
+<pre class="r"><code>x_3 %&gt;% select(names) %&gt;% purrr::map(~boxplot.stats(.x,1.5)$out) # daugiau išskirčių pagal dominančius stulpelius nerasta</code></pre>
 <pre><code>## $Employees
-## [1] 393 335 372 403 360 370 403 348 381
+##  [1] 320 280 224 219 250 318 327 236 393 285 308 240 335 326 250 289 372 272 239
+## [20] 270 403 290 225 222 240 231 329 360 370 250 230 330 332 326 278 403 278 348
+## [39] 381
 ## 
 ## $Revenue
-## numeric(0)
+## [1]  1835717 21810051
 ## 
 ## $Expenses
 ## numeric(0)

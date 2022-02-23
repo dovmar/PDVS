@@ -8,6 +8,7 @@ output:
 
 
 
+
 ```{r, include=FALSE}
 knitr::opts_chunk$set(warning=FALSE,message=FALSE)
 options("digits" = 5)
@@ -56,7 +57,7 @@ summary_list
 
 ```{r}
 # išveda į failus, siekiant nukopijuoti į word lentelę
-x %>% describe %>% select(c("sd","mean","median","min","max")) %>% round(2) %>% write.csv("out.csv",quote=FALSE)
+x_1 %>% describe %>% select(c("sd","mean","median","min","max")) %>% round(2) %>% write.csv("out_2.csv",quote=FALSE)
 
 
 temp <- summary_list %>% enframe() %>% unnest_longer("value") 
@@ -131,7 +132,7 @@ x_3 <- x_2 %>% filter(!Employees %in% outliers$Employees)
 
 
 ```{r}
-x_3 %>% select(names) %>% purrr::map(~boxplot.stats(.x,3)$out) # daugiau išskirčių pagal dominančius stulpelius nerasta
+x_3 %>% select(names) %>% purrr::map(~boxplot.stats(.x,1.5)$out) # daugiau išskirčių pagal dominančius stulpelius nerasta
 ```
 
 
