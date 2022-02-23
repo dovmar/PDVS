@@ -8,7 +8,7 @@ ID,Name,Industry,Inception,Employees,State,City,Revenue,Expenses,Profit,Growth
 7,Treslam,Financial Services,2009,116,MO,Clayton,"$5,387,469","2,127,984 Dollars",3259485,17%
 8,Rednimdox,Construction,2013,73,NY,Woodside,,,,
 9,Lamtone,IT Services,2009,55,CA,San Ramon,"$11,757,018","6,482,465 Dollars",5274553,30%
-10,Stripfind,Financial Services,2010,25,FL,Boca Raton,"$12,329,371","916,455 Dollars",11412916,20%
+10,Stripfind,,2010,25,FL,Boca Raton,"$12,329,371","916,455 Dollars",11412916,20%
 11,Canecorporation,Health,2012,6,,New York,"$10,597,009","7,591,189 Dollars",3005820,7%
 12,Mattouch,IT Services,2013,6,WA,Bellevue,"$14,026,934","7,429,377 Dollars",6597557,26%
 13,Techdrill,Health,2009,9,MS,Flowood,"$10,573,990","7,435,363 Dollars",3138627,8%
@@ -23,15 +23,15 @@ ID,Name,Industry,Inception,Employees,State,City,Revenue,Expenses,Profit,Growth
 22,Lathotline,Health,,103,VA,McLean,"$9,418,303","7,567,233 Dollars",1851070,2%
 23,Lambam,IT Services,2012,210,SC,Columbia,"$11,950,148","4,365,512 Dollars",7584636,20%
 24,Quozap,Software,2004,21,NJ,Collingswood,"$8,304,480","7,019,973 Dollars",1284507,20%
-25,Tampware,Construction,2011,13,TX,Houston,"$9,785,982","2,910,756 Dollars",6875226,11%
+25,Tampware,Construction,2011,13,TX,Houston,,"2,910,756 Dollars",6875226,11%
 26,Dalthow,Health,2000,20,GA,Dacula,"$10,800,718","7,731,820 Dollars",3068898,7%
 27,Ranktech,Government Services,2010,607,FL,Tampa,"$10,515,557","7,439,384 Dollars",3076173,8%
 28,Unadex,Software,2013,280,NC,Cary,"$5,231,275","2,388,521 Dollars",2842754,19%
 29,Groovecane,Construction,2011,17,UT,South Jordan,"$6,811,168","3,560,343 Dollars",3250825,15%
 30,Tambase,Software,2010,29,AZ,Scottsdale,"$9,141,817","2,394,135 Dollars",6747682,21%
 31,Georedfase,IT Services,2008,19,VA,Vienna,"$13,165,222","810,126 Dollars",12355096,16%
-32,Konktraxbam,Software,2011,3,WI,Franklin,"$11,504,780","4,682,545 Dollars",6822235,19%
-33,Stanquote,IT Services,2011,133,IL,Des Plaines,"$15,421,180","374,816 Dollars",15046364,26%
+32,Konktraxbam,Software,2011,3,WI,Franklin,"$11,504,780",,6822235,19%
+33,Stanquote,,2011,133,,Des Plaines,"$15,421,180","374,816 Dollars",15046364,26%
 34,Lexiholding,Health,2011,10,CA,Newport Beach,"$6,595,798","4,917,351 Dollars",1678447,7%
 35,Mediahex,IT Services,2005,29,TX,Houston,"$14,772,570","3,685,640 Dollars",11086930,19%
 36,Triojob,Financial Services,2011,33,TX,Dallas,"$9,403,633","223,602 Dollars",9180031,18%
@@ -44,9 +44,9 @@ ID,Name,Industry,Inception,Employees,State,City,Revenue,Expenses,Profit,Growth
 43,Istone,Software,2011,50,VA,Reston,"$4,424,720","461,975 Dollars",3962745,20%
 44,Ganzgreen,Construction,2010,224,TN,Franklin,,,,9%
 45,Zamhouse,Construction,2009,39,ME,Lisbon Falls,"$7,543,695","6,561,021 Dollars",982674,12%
-46,Openjocon,Construction,2013,75,,Midlothian,"$11,374,343","4,273,207 Dollars",7101136,13%
-47,Trisity,Health,2012,26,CA,San Diego,"$6,918,290","6,344,372 Dollars",573918,0%
-48,Planetice,Health,2012,,MD,Silver Spring,"$10,757,724","6,782,077 Dollars",3975647,4%
+46,Openjocon,Construction,2013,75,IL,Midlothian,"$11,374,343","4,273,207 Dollars",7101136,13%
+47,Trisity,Health,2012,,CA,San Diego,"$6,918,290","6,344,372 Dollars",573918,0%
+48,Planetice,Health,2012,42,MD,Silver Spring,"$10,757,724","6,782,077 Dollars",3975647,4%
 49,Villadox,Construction,2012,20,CA,Carlsbad,"$8,651,649","1,097,353 Dollars",7554296,11%
 50,Alphacane,Retail,2013,3,MO,O'Fallon,"$7,903,763","5,873,666 Dollars",2030097,14%
 51,Rankcone,Government Services,2011,36,VA,Virginia Beach,"$6,036,944","4,837,188 Dollars",1199756,6%
@@ -56,17 +56,17 @@ ID,Name,Industry,Inception,Employees,State,City,Revenue,Expenses,Profit,Growth
 55,Toughway,Financial Services,2010,219,FL,St. Petersburg,"$13,442,136","3,291,056 Dollars",10151080,19%
 56,Bluetexon,IT Services,2010,117,TX,Plano,"$12,685,910","8,350,913 Dollars",4334997,18%
 57,Nimvivafind,Financial Services,2009,34,NJ,Newark,"$11,605,855","2,632,247 Dollars",8973608,19%
-58,Eremenko,Financial Services,2012,60,FL,Maitland,"$11,445,633","3,162,905 Dollars",8282728,15%
+58,Eremenko,Financial Services,2012,,FL,Maitland,"$11,445,633","3,162,905 Dollars",8282728,15%
 59,Hot-Electrics,IT Services,2006,46,GA,Augusta,"$17,214,068","1,412,142 Dollars",15801926,16%
-60,Namdom,Software,2013,105,IL,Chicago,"$8,362,411","2,544,307 Dollars",5818104,19%
+60,Namdom,Software,2013,105,IL,Chicago,"$8,362,411","2,544,307 Dollars",5818104,
 61,Tempbam,Software,2013,134,WA,Seattle,"$8,980,591","6,089,130 Dollars",2891461,25%
-62,Goodhouse,IT Services,2009,63,VA,Herndon,"$14,833,220","5,667,425 Dollars",9165795,24%
+62,Goodhouse,IT Services,2009,63,VA,Herndon,"$14,833,220",,9165795,24%
 63,Sumzoomit,Construction,2010,32,MO,Lee's Summit,"$18,429,577","7,703,652 Dollars",10725925,19%
 64,Goodtex,Government Services,2011,150,VA,Tysons Corner,"$13,118,996","9,860,686 Dollars",3258310,-3%
-65,Ranquote,Health,2013,,GA,Alpharetta,"$7,147,363","4,206,340 Dollars",2941023,6%
-66,Zathtone,,2009,121,NY,New York,"$8,953,759","4,069,681 Dollars",4884078,21%
+65,Ranquote,Health,2013,400,GA,Alpharetta,"$7,147,363","4,206,340 Dollars",2941023,6%
+66,Zathtone,Software,2009,121,NY,New York,"$8,953,759","4,069,681 Dollars",4884078,21%
 67,Vivacode,Construction,2009,28,LA,Lake Charles,"$9,410,642","4,117,102 Dollars",5293540,5%
-68,Dongcom,Retail,2002,8,NY,Cheektowaga,,,11704926,10%
+68,Dongcom,Retail,2002,8,NY,Cheektowaga,"$14,477,085","2,772,159 Dollars",11704926,10%
 69,Hexhouse,Software,2006,668,MA,Cambridge,"$10,221,740","1,885,810 Dollars",8335930,14%
 70,Jobzencane,Software,2011,40,PA,WAYNE,"$7,482,411","2,379,903 Dollars",5102508,21%
 71,Sailtech,Software,2012,850,CA,Santa Clara,"$4,543,509","4,474,647 Dollars",68862,21%
@@ -76,9 +76,9 @@ ID,Name,Industry,Inception,Employees,State,City,Revenue,Expenses,Profit,Growth
 75,Rezumfind,IT Services,2000,50,VA,Herndon,"$14,024,010","3,101,952 Dollars",10922058,23%
 76,Xx--Fase,IT Services,2012,430,TN,Nashville,"$14,048,981","3,944,877 Dollars",10104104,25%
 77,Stiming,IT Services,2014,24,NY,Williamsville,"$9,779,076","594,698 Dollars",9184378,22%
-78,E-Can,Financial Services,2013,1628,NJ,Mount Laurel,,"2,958,881 Dollars",5259205,16%
+78,E-Can,Financial Services,2013,1628,NJ,Mount Laurel,"$8,218,086","2,958,881 Dollars",5259205,16%
 79,Tonjob,Financial Services,2010,87,CA,Santa Barbara,"$8,475,261","2,364,775 Dollars",6110486,16%
-80,Flextone,Financial Services,2010,250,FL,Boca Raton,,"2,494,384 Dollars",,19%
+80,Flextone,Financial Services,2010,250,FL,Boca Raton,"$10,335,149","2,494,384 Dollars",7840765,19%
 81,Lineity,Government Services,2006,113,MA,Billerica,"$8,621,837","2,359,224 Dollars",6262613,4%
 82,Voyadexon,Health,2010,545,TX,Dallas,"$8,913,061","8,763,554 Dollars",149507,8%
 83,Xn-Media,Health,2012,104,NJ,Lyndhurst,"$7,863,279","5,975,968 Dollars",1887311,5%
@@ -98,9 +98,9 @@ ID,Name,Industry,Inception,Employees,State,City,Revenue,Expenses,Profit,Growth
 97,Kaysolodex,IT Services,2012,2670,MI,Madison Heights,"$13,310,294","5,879,731 Dollars",7430563,23%
 98,Kinlax,Financial Services,2002,100,AZ,Tucson,"$11,380,872","6,212,849 Dollars",5168023,18%
 99,Inchkix,Health,2011,29,MA,Northampton,"$8,724,297","7,427,040 Dollars",1297257,7%
-100,Labam,Construction,2010,150,,Winter Garden,"$8,124,116","5,173,904 Dollars",2950212,12%
+100,Labam,Construction,2010,150,FL,Winter Garden,"$8,124,116","5,173,904 Dollars",2950212,12%
 101,Black-Tax,Construction,2012,22,MD,Columbia,"$5,166,324","3,772,942 Dollars",1393382,6%
-102,Med-City,Retail,2009,,IL,Cicero,"$12,488,577",,6851535,13%
+102,Med-City,Retail,2009,16,IL,Cicero,"$12,488,577","5,637,042 Dollars",6851535,13%
 103,Sunviaway,Health,2014,486,NC,Morrisville,"$1,614,585","1,323,005 Dollars",291580,6%
 104,Vaiatrax,Financial Services,2010,24,PA,Philadelphia,"$12,650,059","444,962 Dollars",12205097,21%
 105,Ganzhex,Retail,2011,18,NY,Hopewell Junction,"$7,307,243","2,439,137 Dollars",4868106,11%
@@ -115,7 +115,7 @@ ID,Name,Industry,Inception,Employees,State,City,Revenue,Expenses,Profit,Growth
 114,Zotcare,IT Services,2005,75,GA,Atlanta,"$15,249,518","1,261,501 Dollars",13988017,21%
 115,Roundla,IT Services,2012,1500,MD,Bethesda,"$20,252,673","628,139 Dollars",19624534,20%
 116,Requote,Government Services,2014,61,MD,Bethesda,"$5,994,715","5,947,864 Dollars",46851,10%
-117,Freshholdings,Government Services,2010,65,FL,Orlando,"$10,492,864","1,392,917 Dollars",,9%
+117,Freshholdings,Government Services,2010,65,FL,Orlando,"$10,492,864","1,392,917 Dollars",9099947,9%
 118,Icezunzim,Software,2012,14,VA,Richmond,"$5,150,397","4,274,358 Dollars",876039,20%
 119,Hottam,Software,2011,25,IN,Indianapolis,"$9,422,075","1,875,020 Dollars",7547055,20%
 120,Lattechi,Retail,2012,30,IL,Hickory Hills,"$12,285,548","1,453,319 Dollars",10832229,11%
@@ -155,7 +155,7 @@ ID,Name,Industry,Inception,Employees,State,City,Revenue,Expenses,Profit,Growth
 154,Vilamedia,Software,2011,126,VA,Blacksburg,"$7,605,926","3,454,719 Dollars",4151207,24%
 155,Bignamjob,Health,2013,131,IL,Elk Grove Village,"$8,326,486","7,705,075 Dollars",621411,7%
 156,Kayplus,Government Services,2010,154,FL,Clearwater,"$10,855,879","5,611,400 Dollars",5244479,2%
-157,Hottom,Software,2011,40,MD,Baltimore,"$9,381,784","2,093,538 Dollars",7288246,19%
+157,Hottom,Software,2011,40,MD,Baltimore,,"2,093,538 Dollars",7288246,19%
 158,Voltech,Software,2009,23,NJ,Hamilton,"$10,211,911","5,213,751 Dollars",4998160,13%
 159,Lamdombase,Construction,2012,7,TX,Houston,"$11,428,457","5,595,183 Dollars",5833274,12%
 160,Zathtechi,Software,2003,87,CA,San Jose,"$6,187,775","2,286,092 Dollars",3901683,23%
@@ -172,7 +172,7 @@ ID,Name,Industry,Inception,Employees,State,City,Revenue,Expenses,Profit,Growth
 171,Zimtechno,Software,2006,326,MN,Minneapolis,"$13,268,611","6,773,400 Dollars",6495211,24%
 172,Fax-Street,Software,2011,54,CA,Aliso Viejo,"$4,436,616","4,175,332 Dollars",261284,15%
 173,Scotstrip,Software,2013,77,IL,Chicago,"$9,120,892","125,635 Dollars",8995257,20%
-174,Bigfan,Software,2005,96,WI,La Crosse,"$9,386,159","3,093,397 Dollars",6292762,21%
+174,Bigfan,Software,2005,96,WI,La Crosse,"$9,386,159",,6292762,21%
 175,Kayis,IT Services,2002,26,CA,Newport Beach,"$14,264,750","1,232,980 Dollars",13031770,23%
 176,Drilllane,IT Services,2011,185,VA,Ashburn,"$15,240,158","1,367,678 Dollars",13872480,16%
 177,Randrill,Health,2010,84,GA,Smyrna,"$8,239,229","7,802,235 Dollars",436994,6%
@@ -181,7 +181,7 @@ ID,Name,Industry,Inception,Employees,State,City,Revenue,Expenses,Profit,Growth
 180,Greenfan,Government Services,2013,35,TX,San Antonio,"$10,228,294","6,751,232 Dollars",3477062,9%
 181,Joblab,Government Services,2012,250,VA,Herndon,"$10,216,792","3,436,060 Dollars",6780732,10%
 182,Zenzootrax,Financial Services,2010,289,IL,Chicago,"$9,837,545","2,466,042 Dollars",7371503,17%
-183,Ittech,IT Services,2013,45,MN,Minneapolis,,"6,544,488 Dollars",4589251,20%
+183,Ittech,IT Services,2013,45,MN,Minneapolis,"$11,133,739","6,544,488 Dollars",4589251,20%
 184,Volzoom,Retail,2006,27,ME,Kittery,"$12,218,547","5,081,916 Dollars",7136631,10%
 185,Saofintone,Financial Services,2009,78,CA,San Diego,"$11,559,177","841,579 Dollars",10717598,17%
 186,Indigoit,Retail,2011,15,MI,Jackson,"$13,942,061","5,349,385 Dollars",8592676,14%
@@ -239,7 +239,7 @@ ID,Name,Industry,Inception,Employees,State,City,Revenue,Expenses,Profit,Growth
 238,Stylishhypothesis,IT Services,2011,73,WA,Bellevue,"$15,705,546","3,170,938 Dollars",12534608,17%
 239,Glaciertolerant,Retail,2013,1,GA,Atlanta,"$10,174,843","4,696,022 Dollars",5478821,8%
 240,Squeezebasement,Health,2010,1442,TX,Fort Worth,"$6,681,594","3,852,682 Dollars",2828912,7%
-241,Sounderfibber,IT Services,2011,372,MN,Minnetonka,"$14,727,740","6,403,759 Dollars",8323981,21%
+241,Sounderfibber,IT Services,2011,372,MN,Minnetonka,"$14,727,740","6,403,759 Dollars",8323981,
 242,Lowdirect,Government Services,2011,56,MD,Annapolis,"$7,112,290","4,691,188 Dollars",2421102,2%
 243,Improvelonely,Software,2010,150,DC,Washington,"$4,977,212","462,545 Dollars",4514667,19%
 244,Crashingsubmitted,Government Services,2009,52,VA,Falls Church,"$8,978,177","3,824,137 Dollars",5154040,5%
@@ -288,7 +288,7 @@ ID,Name,Industry,Inception,Employees,State,City,Revenue,Expenses,Profit,Growth
 287,Avogadroethanoate,Health,2010,143,RI,Coventry,"$10,926,954","6,191,046 Dollars",4735908,10%
 288,Assuredcarbon,Financial Services,2010,23,FL,Summerfield,"$11,401,138","4,368,407 Dollars",7032731,13%
 289,Annoyhog,Health,2009,90,FL,Medley,"$12,729,198","7,494,847 Dollars",5234351,9%
-290,Dingalingflee,Retail,2011,44,IL,Tinley Park,"$12,896,887","6,187,326 Dollars",6709561,17%
+290,Dingalingflee,Retail,2011,,IL,Tinley Park,"$12,896,887","6,187,326 Dollars",6709561,17%
 291,Equalityshape,Health,2006,27,CO,Denver,"$6,324,593","4,220,455 Dollars",2104138,6%
 292,Kestrelpumpion,Financial Services,2011,1387,CA,Santa Ana,"$9,023,857","4,453,820 Dollars",4570037,13%
 293,Mathassertive,IT Services,2007,102,VA,Chantilly,"$10,804,178","3,549,635 Dollars",7254543,23%
@@ -333,7 +333,7 @@ ID,Name,Industry,Inception,Employees,State,City,Revenue,Expenses,Profit,Growth
 332,Westminster,Financial Services,2010,,MI,Troy,"$11,861,652","5,245,126 Dollars",6616526,15%
 333,Suicided,Health,2014,29,NC,Hendersonville,"$7,145,863","6,519,467 Dollars",626396,3%
 334,Tocantins,Financial Services,2009,290,VA,Tysons Corner,"$14,330,107","2,296,074 Dollars",12034033,15%
-335,Exilarch,Financial Services,2011,47,FL,Naples,"$8,957,904","2,161,452 Dollars",6796452,19%
+335,Exilarch,Financial Services,2011,47,FL,Naples,,"2,161,452 Dollars",6796452,19%
 336,Refertilization,Construction,2013,13,TX,San Antonio,"$10,064,297","4,498,839 Dollars",5565458,7%
 337,Asynchronous,Health,2013,22,NY,New York,"$8,720,504","2,632,756 Dollars",6087748,1%
 338,Swedenborgism,IT Services,2005,64,MD,Columbia,"$15,379,242","5,949,929 Dollars",9429313,18%
@@ -374,7 +374,7 @@ ID,Name,Industry,Inception,Employees,State,City,Revenue,Expenses,Profit,Growth
 373,Dillimported,Health,2002,30,TX,Humble,"$9,724,730","9,712,296 Dollars",12434,3%
 374,Bookingchildish,Retail,2009,10,NY,Whitestone,"$9,840,239","3,348,650 Dollars",6491589,17%
 375,Supportersfaint,Financial Services,2011,3,NY,Brooklyn,"$12,146,902","1,207,273 Dollars",10939629,14%
-376,Potiondecathlon,IT Services,2011,61,TN,Nashville,"$12,247,815","4,859,318 Dollars",7388497,20%
+376,Potiondecathlon,IT Services,2011,61,TN,Nashville,"$12,247,815","4,859,318 Dollars",,20%
 377,Perfumegrown,Financial Services,2011,33,NV,Las Vegas,"$9,016,449","640,031 Dollars",8376418,14%
 378,Prunewatchful,Health,2011,329,SC,Mauldin,"$8,369,263","3,880,428 Dollars",4488835,5%
 379,Stovepuck,Retail,2013,73,,New York,"$13,814,975","5,904,502 Dollars",7910473,10%
@@ -394,22 +394,22 @@ ID,Name,Industry,Inception,Employees,State,City,Revenue,Expenses,Profit,Growth
 393,Cribcaused,Financial Services,2004,201,GA,Marietta,"$9,020,223","3,683,236 Dollars",5336987,15%
 394,Tryfanscaly,Government Services,2010,28,VA,Alexandria,"$8,456,970","7,736,439 Dollars",720531,4%
 395,Cajoleavoidant,IT Services,2003,17,TN,Nashville,"$15,771,339","1,185,898 Dollars",14585441,20%
-396,Cogstrip,IT Services,2012,30,MN,Minneapolis,"$14,705,673","6,667,372 Dollars",8038301,25%
+396,Cogstrip,IT Services,2012,30,MN,Minneapolis,,"6,667,372 Dollars",8038301,25%
 397,Announcesbuck,Health,2013,370,FL,Deerfield Beach,"$6,146,640","4,390,260 Dollars",1756380,7%
 398,Ericssonsafe,IT Services,2011,9,KY,Erlanger,"$9,844,389","6,503,652 Dollars",3340737,19%
 399,Ahemparticular,Retail,2010,22,MN,Roseville,"$14,367,661","4,908,512 Dollars",9459149,13%
 400,Oraclemend,IT Services,2012,250,TX,Houston,"$16,043,821","8,701,267 Dollars",7342554,21%
 401,Loosepause,Financial Services,2006,85,FL,Sunrise,"$12,008,935","3,285,445 Dollars",8723490,19%
 402,Dragonnode,IT Services,2013,144,VA,Falls Church,"$14,649,797","5,757,388 Dollars",8892409,22%
-403,Australisbetter,Health,2010,1600,CA,El Segundo,"$11,078,804","5,006,435 Dollars",6072369,12%
+403,Australisbetter,Health,2010,1600,,El Segundo,"$11,078,804","5,006,435 Dollars",6072369,12%
 404,Profilecliche,Construction,2000,125,NY,Melville,"$9,398,668","3,333,103 Dollars",6065565,9%
 405,Indonesianheliopause,Health,2013,120,GA,atlanta,"$8,703,595","8,649,914 Dollars",53681,12%
 406,Soulfulantigravity,Retail,2012,60,CA,Ontario,"$12,954,009","4,886,200 Dollars",8067809,12%
-407,Toolsavagery,Retail,2007,10,FL,Tampa,"$10,942,107","4,491,305 Dollars",6450802,16%
+407,Toolsavagery,,2007,10,FL,Tampa,"$10,942,107","4,491,305 Dollars",6450802,16%
 408,Magmarejoice,Health,2012,60,ME,Portland,"$5,894,152","3,401,348 Dollars",2492804,4%
 409,Bloodhoundthin,Government Services,2000,120,MD,Greenbelt,"$13,712,279","3,837,399 Dollars",9874880,4%
 410,Waggerhooves,IT Services,2009,39,FL,Tampa,"$13,222,254","4,879,893 Dollars",8342361,23%
-411,Miaowgrinder,Construction,2000,176,NY,Niagara Falls,"$7,697,469","5,036,679 Dollars",2660790,5%
+411,Miaowgrinder,Construction,2000,176,NY,Niagara Falls,"$7,697,469",,2660790,5%
 412,Fablescraper,IT Services,2009,12,MI,Kentwood,"$14,515,666","5,424,688 Dollars",9090978,26%
 413,Lardassare,Financial Services,2012,88,IL,Bridgeview,"$10,758,326","270,620 Dollars",10487706,15%
 414,Footshy,Government Services,2012,1224,OH,Columbus,"$5,275,078","1,944,661 Dollars",3330417,7%
@@ -427,9 +427,9 @@ ID,Name,Industry,Inception,Employees,State,City,Revenue,Expenses,Profit,Growth
 426,Trapexperts,Financial Services,2011,330,PA,Allentown,"$8,788,469","1,214,119 Dollars",7574350,10%
 427,Currymercurial,IT Services,2010,10,FL,Tampa,"$16,221,821","3,573,280 Dollars",12648541,23%
 428,Totallyzonked,IT Services,2013,53,CA,Santa Clara,"$12,506,219","6,688,379 Dollars",5817840,20%
-429,Practisemax,Government Services,2001,441,VA,Herndon,"$9,426,357","5,157,735 Dollars",4268622,1%
-430,Slicerseptum,IT Services,2014,169,IL,Chicago,"$14,775,286","4,510,084 Dollars",10265202,26%
-431,Librationmelba,IT Services,2010,20,WI,Madison,"$14,053,058","5,883,008 Dollars",8170050,20%
+429,Practisemax,Government Services,2001,,VA,Herndon,"$9,426,357","5,157,735 Dollars",4268622,1%
+430,Slicerseptum,,2014,169,IL,Chicago,"$14,775,286","4,510,084 Dollars",10265202,26%
+431,Librationmelba,IT Services,2010,20,,Madison,"$14,053,058","5,883,008 Dollars",8170050,20%
 432,Placehospitable,Retail,2012,23,ID,Coeur d Alene,"$14,576,493","1,925,321 Dollars",12651172,19%
 433,Arabianagena,Retail,2013,195,MN,Minneapolis,"$13,941,632","4,887,652 Dollars",9053980,10%
 434,Admitruppell,Retail,2010,47,UT,Lehi,"$11,375,526","1,511,586 Dollars",9863940,12%
@@ -460,7 +460,7 @@ ID,Name,Industry,Inception,Employees,State,City,Revenue,Expenses,Profit,Growth
 459,Portlyroomy,Financial Services,2010,40,MO,St. Louis,"$9,707,035","2,887,547 Dollars",6819488,16%
 460,Rustyentertain,Construction,2012,23,TX,Carrollton,"$9,646,815","1,680,823 Dollars",7965992,12%
 461,Novelfollicle,Financial Services,2009,403,OK,Tulsa,"$11,028,550","2,379,097 Dollars",8649453,13%
-462,Yawningcricket,Financial Services,2012,21,NC,Davidson,"$14,247,618","3,133,190 Dollars",11114428,20%
+462,Yawningcricket,Financial Services,2012,21,NC,Davidson,"$14,247,618","3,133,190 Dollars",11114428,
 463,Friendlego,Construction,2012,38,NJ,Westfield,"$9,176,783","4,279,255 Dollars",4897528,8%
 464,Lambdafortunate,Health,2010,59,NC,Durham,"$8,475,310","7,259,295 Dollars",1216015,8%
 465,Dashedcompounds,IT Services,2014,59,CA,San Ramon,"$12,791,846","7,879,018 Dollars",4912828,23%
