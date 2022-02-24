@@ -109,10 +109,18 @@ x_2 <- x_1 %>%
 x_2 %>% summarize(across(everything(),~sum(is.na(.x))))
 ```
 
+
+
+```{r}
+# likusios praleistos reikšmės paliekamos duomenyse (daugiausia reikšmės nominaliuose kintamuosiouse)
+x_2 %>% summarize(across(everything(),~sum(is.na(.x))))
+```
+
+
 ```{r}
 names <- c("Employees","Revenue","Expenses","Profit","Growth")
 
-x_2 %>%  select(names) %>% purrr::map(~boxplot.stats(.x,coef = 1.5)$out) # sąlyginės išskirtys ("mild" outliers)
+x_2 %>%  select(names) %>% purrr::map(~boxplot.stats(.x,coef = 1)$out) # sąlyginės išskirtys ("mild" outliers)
 
 (outliers <- x_2 %>% select(names) %>% purrr::map(~boxplot.stats(.x,3)$out)) # išskirtys ("extreme" outliers)
 ```
@@ -148,9 +156,9 @@ summary_2 <- x_3 %>% select(where(is.numeric),-"ID") %>% describe()
 
 ```{r}
 # normalizavimas
-normalized <- x_3 %>% select(where(is.numeric),-c("ID","Inception")) %>% drop_na() %>% map_df(~((.x-min(.x))/(max(.x)-min(.x)))) 
+normalized <- x_2 %>% select(where(is.numeric),-c("ID","Inception")) %>% drop_na() %>% map_df(~((.x-min(.x))/(max(.x)-min(.x)))) 
 # standartizavimas
-standartized <- x_3 %>% select(where(is.numeric),-c("ID","Inception")) %>% drop_na() %>% map_df(~(.x-mean(.x))/sd(.x)) 
+standartized <- x_2 %>% select(where(is.numeric),-c("ID","Inception")) %>% drop_na() %>% map_df(~(.x-mean(.x))/sd(.x)) 
 ```
 
 
@@ -160,7 +168,7 @@ normalized  %>% pivot_longer(1:5) %>% ggplot(aes(value,color=name)) + geom_boxpl
 
 standartized  %>% pivot_longer(1:5) %>% ggplot(aes(value,color=name)) + geom_boxplot() + coord_flip() + theme_minimal() + scale_color_viridis_d()
 
-x_3 %>% select(where(is.numeric),-c("ID","Inception")) %>% pivot_longer(1:5) %>% ggplot(aes(value,color=name)) + geom_boxplot() + coord_flip() + theme_minimal() + scale_color_viridis_d()
+x_2 %>% select(where(is.numeric),-c("ID","Inception")) %>% pivot_longer(1:5) %>% ggplot(aes(value,color=name)) + geom_boxplot() + coord_flip() + theme_minimal() + scale_color_viridis_d()
 ```
 
 standartizavimas -> kai reikalinga apie 0 centruoti duomenys, kai mūsų duomenys pasiskirstę normaliai ir norime palyginti su standartiniu normaliuoju. 
@@ -170,7 +178,7 @@ standartizacija -> išskirtims, normalizacija -> paliekamos skirtingos dispersij
 
 ```{r}
 library(corrplot)
-x_corr <- x_3[,-1] %>% drop_na()
+x_corr <- x_2[,-1] %>% drop_na()
 
 numerical <- unlist(lapply(x_corr, is.numeric))  
 correlation_matrix <- cor(as.matrix(x_corr[,numerical]))
@@ -182,21 +190,21 @@ corrplot(correlation_matrix, order = "FPC", method = "color",type="upper",diag=F
 
 
 ```{r}
-length(unique(x_3$Industry)) # 7 industrijos
+length(unique(x_2$Industry)) # 7 industrijos
 
-x_industry <- x_3 %>% drop_na()
+x_industry <- x_2 %>% drop_na()
 
 
 x_industry %>% ggplot(aes(x=Profit,fill=Industry)) + geom_histogram(aes(y=after_stat(density)),bins = 12) + facet_wrap(vars(Industry)) + scale_fill_viridis_d() + theme_minimal() + scale_y_continuous(n.breaks = 5)
 
-x_industry %>% ggplot(aes(x=Industry,y=Employees,fill=Industry)) + stat_summary(fun=mean,geom="bar") + scale_fill_viridis_d() + theme_minimal()
+x_industry %>% ggplot(aes(x=Industry,y=Employees,fill=Industry)) + stat_summary(fun=mean,geom="bar") + scale_fill_viridis_d() + theme_minimal() + guides(x=guide_axis(angle=35))
 ```
 
 ```{r}
 x_industry %>% ggplot(aes(Revenue,Expenses,color=Industry)) + geom_point(aes(size=Profit),alpha=0.7) + 
   scale_color_viridis_d() + geom_abline(slope=1,intercept=0) + theme_minimal()
 
-min(x_3$Profit)
+min(x_2$Profit)
 ```
 
 
@@ -211,7 +219,7 @@ library(datasets)
 states <-state.region
 names(states) <- state.abb
 
-x_regions <- x_3 %>% mutate(Region = states[State]) %>% drop_na()
+x_regions <- x_2 %>% mutate(Region = states[State]) %>% drop_na()
 ```
 
 ```{r}
@@ -241,4 +249,47 @@ x_regions %>% drop_na() %>% ggplot(aes(Inception,color=Industry)) + stat_ecdf() 
 ```
 
 
+
+
+
+
+```{r fig.width=13, fig.height=11}
+
+
+library(ggstatsplot)
+
+
+ggbetweenstats(data = x_2,
+               x = Industry,
+               y = Employees                  ,
+               plot.type = "box", mean.plotting=FALSE,
+               results.subtitle=FALSE,
+               outlier.tagging = TRUE, outlier.label = "Name",pairwise.comparisons = FALSE,point.args = list(position="jitter")) 
+```
+
+
+
+```{r}
+Revenue.data <- x_2 %>% group_by(Industry) %>% dplyr::summarize(Mean = mean(Revenue, na.rm=TRUE))
+Revenue.data$key <- "Revenue"
+Profit.data <- x_2 %>% group_by(Industry) %>% dplyr::summarize(Mean = mean(Profit, na.rm=TRUE))
+Profit.data$key <- "Profit"
+
+mean.data <- rbind(Revenue.data,Profit.data)
+mean.data <- mean.data[complete.cases(mean.data),]
+
+ggplot(mean.data, aes(fill=key, y=Mean, x=Industry)) + 
+  geom_bar(position='dodge', stat="identity", alpha = 0.8) + theme_minimal() + guides(x=guide_axis(angle=35))
+```
+
+
+
+```{r}
+ggbetweenstats(data = x_2,
+               x = Industry,
+               y = Profit,                  ,
+               plot.type = "box", mean.plotting=FALSE,
+               results.subtitle=FALSE,
+               outlier.tagging = TRUE, outlier.label = "Name",pairwise.comparisons = FALSE)
+```
 
