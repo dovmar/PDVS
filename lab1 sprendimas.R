@@ -35,7 +35,9 @@ histograms(full.data)
 # praleistų reikšmių tvarkymas
 full.data[full.data == ""] <- NA
 
-miss.data <-full.data[!complete.cases(full.data),]
+#miss.data <-full.data[!complete.cases(full.data),]
+miss.data <- full.data
+
 nrow(miss.data)
 # kadangi profit = revenue - expense
 miss.data$Profit <- ifelse(is.na(miss.data$Profit), miss.data$Revenue-miss.data$Expenses, miss.data$Profit)
@@ -50,6 +52,7 @@ miss.data[is.na(miss.data$State) &miss.data$City=="El Segundo", "State"] <- "LA"
 miss.data[is.na(miss.data$State) &miss.data$City=="Madison", "State"] <- "WI"
 
 nrow(miss.data[!complete.cases(miss.data),])
+full.data<-miss.data
 # randamos skaitiniu kintamuju medianos pagal industrijos grupavima
 library(data.table)
 library(tidyverse)
@@ -69,3 +72,180 @@ full.data <-full.data %>%
 summary(full.data)
 histograms(full.data)
 full.data
+
+library(ggstatsplot)
+boxplot(full.data$Revenue, horizontal = TRUE)
+boxplot(full.data$Employees, horizontal = TRUE)
+boxplot(full.data$Expenses, horizontal = TRUE)
+boxplot(full.data$Profit, horizontal = TRUE)
+boxplot(full.data$Growth, horizontal = TRUE)
+
+
+ggbetweenstats(data = full.data,
+               x = Industry,
+               y = Revenue            ,
+               plot.type = "box", mean.plotting=FALSE,
+               results.subtitle=FALSE,
+               outlier.tagging = TRUE, outlier.label = "Name")
+ggbetweenstats(data = full.data,
+               x = Industry,
+               y = Expenses                  ,
+               plot.type = "box", mean.plotting=FALSE,
+               results.subtitle=FALSE,
+               outlier.tagging = TRUE, outlier.label = "Name")
+ggbetweenstats(data = full.data,
+               x = Industry,
+               y = Employees                  ,
+               plot.type = "box", mean.plotting=FALSE,
+               results.subtitle=FALSE,
+               outlier.tagging = TRUE, outlier.label = "Name")
+mix.data <- full.data[full.data$Employees<6000,]
+
+x <- full.data$Employees
+boxplot(x, horizontal = TRUE)
+qnt <- quantile(x, probs=c(.25, .75), na.rm = T)
+caps <- quantile(x, probs=c(.05, .95), na.rm = T)
+H <- 1.5 * IQR(x, na.rm = T)
+x[x < (qnt[1] - H)] <- caps[1]
+x[x > (qnt[2] + H)] <- caps[2]
+
+ggbetweenstats(data = mix.data,
+               x = Industry,
+               y = Employees                  ,
+               plot.type = "box", mean.plotting=FALSE,
+               results.subtitle=FALSE,
+               outlier.tagging = TRUE, outlier.label = "Name")
+
+ggbetweenstats(data = full.data,
+               x = Industry,
+               y = Profit                  ,
+               plot.type = "box", mean.plotting=FALSE,
+               results.subtitle=FALSE,
+               outlier.tagging = TRUE, outlier.label = "Name")
+
+ggbetweenstats(data = full.data,
+               x = Industry,
+               y = Growth                  ,
+               plot.type = "box", mean.plotting=FALSE,
+               results.subtitle=FALSE,
+               outlier.tagging = TRUE, outlier.label = "Name")
+
+# removing outliers
+outliers <- function(x) {
+  
+  Q1 <- quantile(x, probs=.25)
+  Q3 <- quantile(x, probs=.75)
+  iqr = Q3-Q1
+  
+  upper_limit = Q3 + (iqr*1.5)
+  lower_limit = Q1 - (iqr*1.5)
+  
+  x > upper_limit | x < lower_limit
+}
+
+remove_outliers <- function(df, cols = names(df)) {
+  for (col in cols) {
+    df <- df[!outliers(df[[col]]),]
+  }
+  df
+}
+
+temp.data.G <- full.data %>% dplyr::select(Name, Industry, Growth)
+boxplot(temp.data.G$Growth, horizontal = TRUE)
+ggbetweenstats(data = temp.data.G,
+               x = Industry,
+               y = Growth                  ,
+               plot.type = "box", mean.plotting=FALSE,
+               results.subtitle=FALSE,
+               outlier.tagging = TRUE, outlier.label = "Name")
+temp.data.G<-remove_outliers(temp.data.G, c("Growth"))
+summary(temp.data.G$Growth)
+
+temp.data.R <- full.data %>% dplyr::select(Name, Industry, Revenue)
+boxplot(temp.data.R$Revenue, horizontal = TRUE)
+ggbetweenstats(data = temp.data.R,
+               x = Industry,
+               y = Revenue,
+               plot.type = "box", mean.plotting=FALSE,
+               results.subtitle=FALSE,
+               outlier.tagging = TRUE, outlier.label = "Name")
+temp.data.R<-remove_outliers(temp.data.R, c("Revenue"))
+summary(temp.data.R$Revenue)
+
+temp.data.E <- full.data %>% dplyr::select(Name, Industry, Expenses)
+boxplot(temp.data.E$Expenses, horizontal = TRUE)
+ggbetweenstats(data = temp.data.R,
+               x = Industry,
+               y = Expenses,
+               plot.type = "box", mean.plotting=FALSE,
+               results.subtitle=FALSE,
+               outlier.tagging = TRUE, outlier.label = "Name")
+temp.data.E<-remove_outliers(temp.data.E, c("Expenses"))
+summary(temp.data.E$Expenses)
+
+temp.data.P <- full.data %>% dplyr::select(Name, Industry, Profit)
+boxplot(temp.data.P$Profit, horizontal = TRUE)
+ggbetweenstats(data = temp.data.P,
+               x = Industry,
+               y = Profit,
+               plot.type = "box", mean.plotting=FALSE,
+               results.subtitle=FALSE,
+               outlier.tagging = TRUE, outlier.label = "Name")
+temp.data.P<-remove_outliers(temp.data.P, c("Profit"))
+summary(temp.data.P$Profit)
+
+temp.data.EM <- full.data %>% dplyr::select(Name, Industry, Employees)
+boxplot(temp.data.EM$Employees, horizontal = TRUE)
+ggbetweenstats(data = temp.data.EM,
+               x = Industry,
+               y = Employees,
+               plot.type = "box", mean.plotting=FALSE,
+               results.subtitle=FALSE,
+               outlier.tagging = TRUE, outlier.label = "Name")
+temp.data.EM<-remove_outliers(temp.data.EM, c("Employees"))
+summary(temp.data.EM$Employees)
+#summary:
+summary(temp.data.G$Growth)
+summary(temp.data.R$Revenue)
+summary(temp.data.E$Expenses)
+summary(temp.data.P$Profit)
+summary(temp.data.EM$Employees)
+
+
+min_max_norm <- function(x) {
+  (x - min(x)) / (max(x) - min(x))
+}
+
+temp.data.EM <- full.data %>% dplyr::select(Name, Industry, Employees)
+norm.data.EM<-full.data %>% dplyr::select(Name, Industry, Employees)
+norm.data.EM$Employees <-(norm.data.EM$Employees - mean(norm.data.EM$Employees)) / sd(norm.data.EM$Employees)
+norm.data.EM
+norm.data.EM$Employees <-(norm.data.EM$Employees - mean(norm.data.EM$Employees)) / sd(norm.data.EM$Employees)
+norm.data.EM
+
+boxplot(norm.data.EM$Employees, horizontal = TRUE)
+hist(norm.data.EM$Employees)
+
+library(ggplot2)
+
+Revenue.data <- full.data %>% group_by(Industry) %>% dplyr::summarize(Mean = mean(Revenue, na.rm=FALSE))
+Revenue.data$key <- "Revenue"
+Profit.data <- full.data %>% group_by(Industry) %>% dplyr::summarize(Mean = mean(Profit, na.rm=FALSE))
+Profit.data$key <- "Profit"
+
+mean.data <- rbind(Revenue.data,Profit.data)
+mean.data <- mean.data[complete.cases(mean.data),]
+
+ggplot(mean.data, aes(fill=key, y=Mean, x=Industry)) + 
+  geom_bar(position='identity', stat="identity", alpha = 0.5)
+
+constr.data <- full.data[full.data$Industry == "Construction",]
+
+tr<-ggplot(data=constr.data, aes(x=Revenue, y=Profit,
+                         colour = Industry))
+tr+ geom_point(aes(x=Revenue, y=Profit,
+                   colour = Industry)) + geom_smooth(method = "loess", formula = y ~ x)
+tr
+
+
+
