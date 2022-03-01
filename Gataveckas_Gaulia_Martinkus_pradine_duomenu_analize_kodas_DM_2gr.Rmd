@@ -37,36 +37,6 @@ x_1 <- x %>%
 
 
 ```{r}
-library(psych)
-x_1 %>% select(where(is.numeric),-"ID") %>% describe()
-
-
-
-x_grouped <- x_1 %>% group_by(Industry)
-names <- x_grouped %>% group_keys() %>% pull(Industry)
-
-summary_list <- x_grouped %>% select(where(is.numeric)) %>% select(-"ID") %>% 
-  group_split() %>% 
-  purrr::map(~select(.x,-"Industry")) %>%
-  purrr::map(describe) %>%
-  purrr::map(~rownames_to_column(as.data.frame(.x)))
-
-names(summary_list) <- names
-summary_list
-```
-
-```{r}
-# išveda į failus, siekiant nukopijuoti į word lentelę
-x_1 %>% describe %>% select(c("sd","mean","median","min","max")) %>% round(2) %>% write.csv("out_2.csv",quote=FALSE)
-
-
-temp <- summary_list %>% enframe() %>% unnest_longer("value") 
-
-cbind(temp$name,temp$value) %>% select(c("rowname","temp$name","sd","mean","median","min","max")) %>% mutate(across(where(is.numeric),round,2)) %>% write.csv("out_2.csv",quote=FALSE,row.names = FALSE)
-```
-
-
-```{r}
 # turimi vienų metų duomenys. esant praeitų metų duomenims NA reikšmes būtų galima pakeisti praeitomis
 x_1 %>% group_by(Name) %>% count() %>% arrange(desc(n))
 
@@ -87,40 +57,65 @@ names(cities) <- str_replace(us.cities$name,paste("",us.cities$country.etc),"")
 x_2 <- x_1 %>%
   # faktinis užpildymas
   mutate(State = if_else(is.na(State),cities[City],State)) %>%
+  mutate(State = if_else(City == "Midlothian","VA",if_else(City == "Winter Garden","FL",State))) %>%
   # išvestinės reikšmės 
   mutate(Expenses = if_else(is.na(Expenses) & !is.na(Profit),Revenue - Profit,Expenses),
         Revenue = if_else(is.na(Revenue) & !is.na(Profit),Expenses + Profit,Revenue)) %>%
   group_by(Industry) %>%
-  filter(!(is.na(Revenue) & is.na(Expenses) & !is.na(Profit))) %>%
   mutate(Expenses = replace_with_group_median(Expenses),
          Revenue = replace_with_group_median(Revenue),
          Profit = Revenue - Expenses) %>%
-  rbind(x_1  %>% filter((is.na(Revenue) & is.na(Expenses) & !is.na(Profit)))) %>%
   mutate(Employees = replace_with_group_median(Employees),
-         Growth = replace_with_group_median(Growth)) %>%
+         Growth = replace_with_group_median(Growth),
+         Inception = floor(replace_with_group_median(Inception))) %>%
   ungroup()
 
-
 ```
 
 
+
+
+
 ```{r}
-# likusios praleistos reikšmės paliekamos duomenyse (daugiausia reikšmės nominaliuose kintamuosiouse)
+# likusios praleistos reikšmės paliekamos duomenyse
 x_2 %>% summarize(across(everything(),~sum(is.na(.x))))
 ```
 
 
 
 ```{r}
-# likusios praleistos reikšmės paliekamos duomenyse (daugiausia reikšmės nominaliuose kintamuosiouse)
-x_2 %>% summarize(across(everything(),~sum(is.na(.x))))
+library(psych)
+x_2 %>% select(where(is.numeric),-"ID") %>% describe()
+
+
+x_grouped <- x_2 %>% group_by(Industry)
+names <- x_grouped %>% group_keys() %>% pull(Industry)
+
+summary_list <- x_grouped %>% select(where(is.numeric)) %>% select(-"ID") %>% 
+  group_split() %>% 
+  purrr::map(~select(.x,-"Industry")) %>%
+  purrr::map(describe) %>%
+  purrr::map(~rownames_to_column(as.data.frame(.x)))
+
+names(summary_list) <- names
+summary_list
+```
+
+```{r}
+# išveda į failus, siekiant nukopijuoti į word lentelę
+x_2 %>% describe %>% select(c("sd","mean","median","min","max")) %>% round(2) %>% write.csv("out_2.csv",quote=FALSE)
+
+
+temp <- summary_list %>% enframe() %>% unnest_longer("value") 
+
+cbind(temp$name,temp$value) %>% select(c("rowname","temp$name","sd","mean","median","min","max")) %>% mutate(across(where(is.numeric),round,2)) %>% write.csv("out_2.csv",quote=FALSE,row.names = FALSE)
 ```
 
 
 ```{r}
 names <- c("Employees","Revenue","Expenses","Profit","Growth")
 
-x_2 %>%  select(names) %>% purrr::map(~boxplot.stats(.x,coef = 1)$out) # sąlyginės išskirtys ("mild" outliers)
+x_2 %>%  select(names) %>% purrr::map(~boxplot.stats(.x,coef = 1.5)$out) # sąlyginės išskirtys ("mild" outliers)
 
 (outliers <- x_2 %>% select(names) %>% purrr::map(~boxplot.stats(.x,3)$out)) # išskirtys ("extreme" outliers)
 ```
@@ -171,11 +166,6 @@ standartized  %>% pivot_longer(1:5) %>% ggplot(aes(value,color=name)) + geom_box
 x_2 %>% select(where(is.numeric),-c("ID","Inception")) %>% pivot_longer(1:5) %>% ggplot(aes(value,color=name)) + geom_boxplot() + coord_flip() + theme_minimal() + scale_color_viridis_d()
 ```
 
-standartizavimas -> kai reikalinga apie 0 centruoti duomenys, kai mūsų duomenys pasiskirstę normaliai ir norime palyginti su standartiniu normaliuoju. 
-
-standartizacija -> išskirtims, normalizacija -> paliekamos skirtingos dispersijos.
-
-
 ```{r}
 library(corrplot)
 x_corr <- x_2[,-1] %>% drop_na()
@@ -213,6 +203,7 @@ min(x_2$Profit)
 
 
 Pagal regionus
+
 
 ```{r}
 library(datasets)
@@ -253,22 +244,6 @@ x_regions %>% drop_na() %>% ggplot(aes(Inception,color=Industry)) + stat_ecdf() 
 
 
 
-```{r fig.width=13, fig.height=11}
-
-
-library(ggstatsplot)
-
-
-ggbetweenstats(data = x_2,
-               x = Industry,
-               y = Employees                  ,
-               plot.type = "box", mean.plotting=FALSE,
-               results.subtitle=FALSE,
-               outlier.tagging = TRUE, outlier.label = "Name",pairwise.comparisons = FALSE,point.args = list(position="jitter")) 
-```
-
-
-
 ```{r}
 Revenue.data <- x_2 %>% group_by(Industry) %>% dplyr::summarize(Mean = mean(Revenue, na.rm=TRUE))
 Revenue.data$key <- "Revenue"
@@ -285,11 +260,48 @@ ggplot(mean.data, aes(fill=key, y=Mean, x=Industry)) +
 
 
 ```{r}
+library(ggstatsplot)
+
 ggbetweenstats(data = x_2,
                x = Industry,
                y = Profit,                  ,
                plot.type = "box", mean.plotting=FALSE,
                results.subtitle=FALSE,
                outlier.tagging = TRUE, outlier.label = "Name",pairwise.comparisons = FALSE)
+```
+
+
+```{r}
+emp.data <- x_2 %>% arrange(desc(Employees)) 
+emp.data_1 <- emp.data[1:as.integer(nrow(emp.data)*0.15),]
+emp.data <- emp.data %>% arrange(Employees) 
+emp.data_2 <- emp.data[1:as.integer(nrow(emp.data)*0.85),]
+ggbetweenstats(data = emp.data_1,
+               x = Industry,
+               y = Revenue            ,
+               plot.type = "box", mean.plotting=FALSE,
+               results.subtitle=FALSE,
+               outlier.tagging = TRUE, outlier.label = "Name" ,pairwise.comparisons = FALSE)
+
+ggbetweenstats(data = emp.data_2,
+               x = Industry,
+               y = Revenue            ,
+               plot.type = "box", mean.plotting=FALSE,
+               results.subtitle=FALSE,
+               outlier.tagging = TRUE, outlier.label = "Name" ,pairwise.comparisons = FALSE)
+
+boxplot(x_2$Employees, horizontal = TRUE, main="Visos įmonės")
+boxplot(emp.data_1$Employees, horizontal = TRUE, main="Didelių įmonių grupė")
+boxplot(emp.data_2$Employees, horizontal = TRUE, main="Mažų įmonių grupė")
+
+
+ggbetweenstats(data = x_2,
+               x = Industry,
+               y = Profit,                  ,
+               plot.type = "box", mean.plotting=FALSE,
+               results.subtitle=FALSE,
+               outlier.tagging = TRUE, outlier.label = "Name",pairwise.comparisons = FALSE)
+
+
 ```
 
