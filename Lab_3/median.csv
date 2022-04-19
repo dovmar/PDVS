@@ -1,0 +1,11 @@
+,0_original,0_reduced,1_original,1_reduced,statistic,variable
+0,108.5,109.0,120.5,120.0,50%,tempo
+1,32.0,32.0,71.0,71.0,50%,energy
+2,51.0,51.0,67.0,67.0,50%,danceability
+3,-11.5,-11.0,-6.0,-6.0,50%,loudness
+4,13.0,13.0,12.0,12.0,50%,liveness
+5,49.0,50.0,56.0,56.0,50%,valence
+6,155.5,155.0,222.5,223.0,50%,duration
+7,74.0,75.0,11.0,11.0,50%,acousticness
+8,3.0,3.0,4.0,4.0,50%,speechiness
+9,44.0,44.0,72.0,72.0,50%,popularity
