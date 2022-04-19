@@ -8,3 +8,5 @@ Lab2 Dimensijos mažinimas
 Lab3 Dimensijos mažinimas klasterizavime
 
 MDS Multidimensional Scaling metodo pristatymas
+
+Lab2 Dimensijos mažinimo metodų taikymas klasterizavime
