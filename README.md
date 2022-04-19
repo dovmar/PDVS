@@ -5,8 +5,7 @@ Lab1 Pirminė duomenų aibės analizė
 
 Lab2 Dimensijos mažinimas
 
-Lab3 Dimensijos mažinimas klasterizavime
+Lab3 Dimensijos mažinimo metodų taikymas klasterizavime
 
 MDS Multidimensional Scaling metodo pristatymas
 
-Lab2 Dimensijos mažinimo metodų taikymas klasterizavime
