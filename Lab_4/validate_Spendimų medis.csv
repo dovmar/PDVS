@@ -1,0 +1,3 @@
+Modelis,Precision,Recall,F1-Score,Support,Accuracy
+Spendimų medis,0.82,0.88,0.85,26.0,0.83
+Spendimų medis,0.83,0.75,0.79,20.0,0.83
