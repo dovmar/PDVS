@@ -1,7 +1,0 @@
-Modelis,Klasė,Precision,Recall,F1-Score,Accuracy
-Naivus Bajeso,10s,0.86,0.96,0.91,0.89
-Naivus Bajeso,80s,0.94,0.8,0.86,0.89
-Sprendimų medis,10s,0.85,0.85,0.85,0.83
-Sprendimų medis,80s,0.8,0.8,0.8,0.83
-Atsitiktinis miškas,10s,0.87,1.0,0.93,0.91
-Atsitiktinis miškas,80s,1.0,0.8,0.89,0.91

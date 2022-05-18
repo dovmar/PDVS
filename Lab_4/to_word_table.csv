@@ -1,7 +1,0 @@
-,index,Modelis,Precision,Recall,F1-Score,Support
-0,0,Naivus Bajeso,0.85,0.92,0.89,80.0
-1,1,Naivus Bajeso,0.91,0.83,0.87,76.0
-2,0,Sprendimų medis,0.79,0.9,0.84,80.0
-3,1,Sprendimų medis,0.88,0.75,0.81,76.0
-4,0,Atsitiktinis miškas,0.82,0.9,0.86,80.0
-5,1,Atsitiktinis miškas,0.88,0.79,0.83,76.0
